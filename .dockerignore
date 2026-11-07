@@ -1,0 +1,11 @@
+# Contexto raiz reservado para Nginx y MySQL.
+# Ningun codigo privado de frontend/backend participa en el build de Nginx.
+*
+!backend/
+!backend/public/
+!backend/public/**
+!docker/
+!docker/nginx/
+!docker/nginx/**
+!docker/mysql/
+!docker/mysql/Dockerfile

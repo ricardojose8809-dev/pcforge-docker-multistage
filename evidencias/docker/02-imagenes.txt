@@ -1,0 +1,8 @@
+IMAGE                             ID             DISK USAGE   CONTENT SIZE   EXTRA
+docker/welcome-to-docker:latest   c4d56c24da4f       22.2MB         6.03MB   U
+hello-world:latest                c567b231f656       25.9kB         9.49kB   U
+pcforge-backend:local             d639889daae1        236MB         53.6MB   U
+pcforge-db:local                  f88c2faa20ec       1.09GB          234MB   U
+pcforge-frontend:local            7c38fb887112        790MB          192MB   U
+pcforge-nginx:local               36493877677c       92.7MB         26.1MB   U
+rm-explorer:1.0                   8aceb3d506f7       1.02GB          227MB   U

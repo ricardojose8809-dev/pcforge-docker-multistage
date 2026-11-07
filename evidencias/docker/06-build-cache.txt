@@ -1,0 +1,187 @@
+ Image pcforge-nginx:local Building
+ Image pcforge-frontend:local Building
+ Image pcforge-db:local Building
+ Image pcforge-backend:local Building
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.95kB 0.0s done
+#1 DONE 0.0s
+
+#2 [frontend internal] load build definition from Dockerfile
+#2 transferring dockerfile: 1.35kB 0.0s done
+#2 DONE 0.1s
+
+#3 [backend internal] load build definition from Dockerfile
+#3 transferring dockerfile: 1.54kB 0.1s done
+#3 DONE 0.2s
+
+#4 [backend] resolve image config for docker-image://docker.io/docker/dockerfile:1.7
+#4 ...
+
+#5 [auth] docker/dockerfile:pull token for registry-1.docker.io
+#5 DONE 0.0s
+
+#4 [backend] resolve image config for docker-image://docker.io/docker/dockerfile:1.7
+#4 DONE 2.0s
+
+#6 [frontend] docker-image://docker.io/docker/dockerfile:1.7@sha256:a57df69d0ea827fb7266491f2813635de6f17269be881f696fbfdf2d83dda33e
+#6 resolve docker.io/docker/dockerfile:1.7@sha256:a57df69d0ea827fb7266491f2813635de6f17269be881f696fbfdf2d83dda33e 0.1s done
+#6 resolve docker.io/docker/dockerfile:1.7@sha256:a57df69d0ea827fb7266491f2813635de6f17269be881f696fbfdf2d83dda33e 0.1s done
+#6 CACHED
+
+#7 [frontend internal] load metadata for docker.io/library/node:22-alpine
+#7 ...
+
+#8 [auth] library/php:pull token for registry-1.docker.io
+#8 DONE 0.0s
+
+#9 [auth] library/composer:pull token for registry-1.docker.io
+#9 DONE 0.0s
+
+#10 [auth] library/node:pull token for registry-1.docker.io
+#10 DONE 0.0s
+
+#11 [backend internal] load metadata for docker.io/library/composer:2
+#11 ...
+
+#12 [backend internal] load metadata for docker.io/library/php:8.4-fpm-alpine
+#12 DONE 0.8s
+
+#11 [backend internal] load metadata for docker.io/library/composer:2
+#11 DONE 0.9s
+
+#7 [frontend internal] load metadata for docker.io/library/node:22-alpine
+#7 DONE 0.9s
+
+#13 [frontend internal] load .dockerignore
+#13 transferring context:
+#13 transferring context: 196B 0.0s done
+#13 DONE 0.1s
+
+#14 [backend internal] load .dockerignore
+#14 transferring context: 350B 0.1s done
+#14 DONE 0.1s
+
+#15 [backend internal] load build context
+#15 DONE 0.0s
+
+#16 [frontend internal] load build context
+#16 DONE 0.0s
+
+#17 [backend] FROM docker.io/library/composer:2@sha256:8de2184c6de224f4689e8f80ed5f5edaf0030b6b8b7839a22a2bcb6722ac87d0
+#17 resolve docker.io/library/composer:2@sha256:8de2184c6de224f4689e8f80ed5f5edaf0030b6b8b7839a22a2bcb6722ac87d0 0.1s done
+#17 DONE 0.1s
+
+#18 [frontend base 1/3] FROM docker.io/library/node:22-alpine@sha256:0e1754758c2df4cfa3e68d59e2e1b7374bb7fd9ea6328eaaacf15cc934af8202
+#18 resolve docker.io/library/node:22-alpine@sha256:0e1754758c2df4cfa3e68d59e2e1b7374bb7fd9ea6328eaaacf15cc934af8202
+#18 resolve docker.io/library/node:22-alpine@sha256:0e1754758c2df4cfa3e68d59e2e1b7374bb7fd9ea6328eaaacf15cc934af8202 0.1s done
+#18 DONE 0.1s
+
+#19 [backend php-base 1/3] FROM docker.io/library/php:8.4-fpm-alpine@sha256:15462d03828e68ae806c552403360edc5269a830d358646a9564dbebe632b787
+#19 resolve docker.io/library/php:8.4-fpm-alpine@sha256:15462d03828e68ae806c552403360edc5269a830d358646a9564dbebe632b787 0.1s done
+#19 DONE 0.1s
+
+#16 [frontend internal] load build context
+#16 transferring context: 4.40kB 0.1s done
+#16 DONE 0.1s
+
+#15 [backend internal] load build context
+#15 transferring context: 5.43kB 0.1s done
+#15 DONE 0.1s
+
+#20 [frontend build 2/2] RUN pnpm build
+#20 CACHED
+
+#21 [frontend dependencies 2/2] RUN --mount=type=cache,id=pcforge-pnpm-store,target=/pnpm/store     pnpm install --frozen-lockfile --store-dir /pnpm/store
+#21 CACHED
+
+#22 [frontend runtime 5/7] COPY --chown=node:node --from=build /app/public ./public
+#22 CACHED
+
+#23 [frontend production-dependencies 2/2] RUN --mount=type=cache,id=pcforge-pnpm-store,target=/pnpm/store     pnpm install --prod --frozen-lockfile --store-dir /pnpm/store
+#23 CACHED
+
+#24 [frontend base 2/3] WORKDIR /app
+#24 CACHED
+
+#25 [frontend dependencies 1/2] COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+#25 CACHED
+
+#26 [frontend build 1/2] COPY . .
+#26 CACHED
+
+#27 [frontend runtime 6/7] COPY --chown=node:node --from=build /app/package.json ./package.json
+#27 CACHED
+
+#28 [frontend runtime 3/7] COPY --chown=node:node --from=production-dependencies /app/node_modules ./node_modules
+#28 CACHED
+
+#29 [frontend runtime 4/7] COPY --chown=node:node --from=build /app/.next ./.next
+#29 CACHED
+
+#30 [frontend base 3/3] RUN npm install --global --no-audit --no-fund pnpm@12.11.2
+#30 CACHED
+
+#31 [frontend runtime 7/7] COPY --chown=node:node --from=build /app/next.config.ts ./next.config.ts
+#31 CACHED
+
+#32 [backend composer-build 5/5] RUN composer dump-autoload --no-dev --optimize --no-scripts     && php artisan package:discover --ansi
+#32 CACHED
+
+#33 [backend php-base 2/3] WORKDIR /var/www/html
+#33 CACHED
+
+#34 [backend composer-build 3/5] RUN composer install --no-dev --no-scripts --no-interaction --prefer-dist --no-progress
+#34 CACHED
+
+#35 [backend php-base 3/3] RUN set -eux;     apk add --no-cache icu-libs libzip oniguruma libxml2;     apk add --no-cache --virtual .php-build-deps autoconf 		dpkg-dev dpkg 		file 		g++ 		gcc 		libc-dev 		make 		pkgconf 		re2c icu-dev libzip-dev oniguruma-dev libxml2-dev;     docker-php-ext-install -j "$(nproc)" bcmath intl mbstring pdo_mysql xml zip opcache;     apk del .php-build-deps;     cp "/usr/local/etc/php/php.ini-production" "/usr/local/etc/php/php.ini";     printf '%s\n' '[www]' 'clear_env = no' > /usr/local/etc/php-fpm.d/zz-pcforge-env.conf
+#35 CACHED
+
+#36 [backend runtime 1/4] COPY . .
+#36 CACHED
+
+#37 [backend composer-build 1/5] COPY --from=composer:2 /usr/bin/composer /usr/local/bin/composer
+#37 CACHED
+
+#38 [backend runtime 2/4] COPY --from=composer-build /var/www/html/vendor ./vendor
+#38 CACHED
+
+#39 [backend runtime 3/4] COPY --from=composer-build /var/www/html/bootstrap/cache ./bootstrap/cache
+#39 CACHED
+
+#40 [backend composer-build 2/5] COPY composer.json composer.lock ./
+#40 CACHED
+
+#41 [backend composer-build 4/5] COPY . .
+#41 CACHED
+
+#42 [backend runtime 4/4] RUN set -eux;     mkdir -p storage/app/public storage/framework/cache/data storage/framework/sessions storage/framework/views storage/logs bootstrap/cache;     chown -R www-data:www-data storage bootstrap/cache;     chmod -R ug+rwX storage bootstrap/cache
+#42 CACHED
+
+#43 [frontend] exporting to image
+#43 exporting layers 0.0s done
+#43 exporting manifest sha256:7bdb09f6577aede988e90c3b6212e807250c95eaec6bf21bd719066245739e37 done
+#43 exporting config sha256:df355cb5f80b2faaac75d52b2b98086a8dc3c5934e3e2b42c9b2b91e136c0b1a done
+#43 exporting attestation manifest sha256:71cc55b784a9acebe336479e14df4410569778537e6c842138ad4ab73e35041a
+#43 exporting attestation manifest sha256:71cc55b784a9acebe336479e14df4410569778537e6c842138ad4ab73e35041a 0.2s done
+#43 exporting manifest list sha256:59a65623af8da0592d8ef2f613e57f874bbcc4bb65c43bfa7f70af8cdaf8ba23 0.1s done
+#43 naming to docker.io/library/pcforge-frontend:local 0.0s done
+#43 unpacking to docker.io/library/pcforge-frontend:local 0.0s done
+#43 DONE 0.6s
+
+#44 [backend] exporting to image
+#44 exporting layers 0.0s done
+#44 exporting manifest sha256:9e5de0dfac8b75115869748b88241ee985144f213a4bc87529d40042f0e869e1 done
+#44 exporting config sha256:3d16fe70af2fd698bbc3771c5b873c31a116b87d599f4d5fe6bf70fdcd11e097 done
+#44 exporting attestation manifest sha256:697fa9f0c59726a492c250159c3465d7924334dd1a2e97c0fc1d81f78e9710c5 0.2s done
+#44 exporting manifest list sha256:d0b8c2349ebfe3a55f16ca33b6fcbaec9d8c9c09592973a50db3d943d58e401a 0.1s done
+#44 naming to docker.io/library/pcforge-backend:local 0.0s done
+#44 unpacking to docker.io/library/pcforge-backend:local 0.1s done
+#44 DONE 0.6s
+
+#45 [frontend] resolving provenance for metadata file
+#45 DONE 0.1s
+
+#46 [backend] resolving provenance for metadata file
+#46 DONE 0.0s
+ Image pcforge-frontend:local Built
+ Image pcforge-backend:local Built

@@ -1,0 +1,5 @@
+﻿NAME                 IMAGE                    COMMAND                  SERVICE    CREATED          STATUS                    PORTS
+pcforge-backend-1    pcforge-backend:local    "sh /var/www/html/doΓÇª"   backend    9 minutes ago    Up 9 minutes (healthy)    9000/tcp
+pcforge-db-1         pcforge-db:local         "docker-entrypoint.sΓÇª"   db         17 minutes ago   Up 17 minutes (healthy)   3306/tcp, 33060/tcp
+pcforge-frontend-1   pcforge-frontend:local   "docker-entrypoint.sΓÇª"   frontend   17 minutes ago   Up 8 minutes (healthy)    0.0.0.0:3000->3000/tcp, [::]:3000->3000/tcp
+pcforge-nginx-1      pcforge-nginx:local      "/docker-entrypoint.ΓÇª"   nginx      17 minutes ago   Up 8 minutes (healthy)    0.0.0.0:8000->80/tcp, [::]:8000->80/tcp
